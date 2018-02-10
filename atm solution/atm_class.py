@@ -14,15 +14,13 @@ class ATM:
             print 'invalid request'
         else:
             self.balance -= request  # getting balance before loop
-            allowed_values = [100, 50, 10, 5]
-            i = 0
-            while i < len(allowed_values):
-                if request < allowed_values[i]:  # get next index in list
-                    i += 1
-                else:
-                    request -= allowed_values[i]
-                    print 'give', allowed_values[i]
-            if request > 0:  # checking request after loop
+            allowed_papers = [100, 50, 10, 5]
+            for paper in allowed_papers:
+                paper_number = request / paper
+                request -= paper * paper_number
+                for i in range(paper_number):
+                    print 'give', paper
+            if request > 0:
                 print 'give', request
 
         print '=' * 35
