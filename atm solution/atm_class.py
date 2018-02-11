@@ -2,6 +2,7 @@ class ATM:
     def __init__(self, balance, bank_name):
         self.balance = balance
         self.bank_name = bank_name
+        self.withdrawals_list = []
 
     def withdraw(self, request):
         print 'Welcome to', self.bank_name
@@ -13,6 +14,7 @@ class ATM:
         elif request <= 0:
             print 'invalid request'
         else:
+            self.withdrawals_list.append(request)
             self.balance -= request  # getting balance before loop
             allowed_papers = [100, 50, 10, 5]
             for paper in allowed_papers:
@@ -25,3 +27,15 @@ class ATM:
 
         print '=' * 35
         return self.balance
+
+    def show_withdrawals(self):
+        print '-' * 10, 'INVOICE', '-' * 10
+        previous_balance = self.balance + sum(self.withdrawals_list)
+        print 'Previous balance:', previous_balance
+
+        for withdrawal in self.withdrawals_list:
+            print 'withdrawal:', withdrawal
+
+        print 'All withdrawals:', sum(self.withdrawals_list)
+        print 'Current balance:', previous_balance - sum(self.withdrawals_list)
+        print '-' * 30
