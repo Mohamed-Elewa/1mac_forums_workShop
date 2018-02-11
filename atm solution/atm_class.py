@@ -7,7 +7,7 @@ class ATM:
     def withdraw(self, request):
         print 'Welcome to', self.bank_name
         print 'Current balance =', self.balance
-        print '=' * 35
+        self.seperator()
 
         if request > self.balance:
             print 'can\'t give you all the money !!'
@@ -18,14 +18,14 @@ class ATM:
             self.balance -= request  # getting balance before loop
             allowed_papers = [100, 50, 10, 5]
             for paper in allowed_papers:
-                paper_number = request / paper
+                paper_number = int(request / paper)
                 request -= paper * paper_number
                 for i in range(paper_number):
                     print 'give', paper
             if request > 0:
                 print 'give', request
 
-        print '=' * 35
+        self.seperator()
         return self.balance
 
     def show_withdrawals(self):
@@ -38,4 +38,7 @@ class ATM:
 
         print 'All withdrawals:', sum(self.withdrawals_list)
         print 'Current balance:', previous_balance - sum(self.withdrawals_list)
-        print '-' * 30
+        self.seperator()
+
+    def seperator(self):
+    	print '=' * 35
