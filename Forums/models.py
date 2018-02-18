@@ -1,26 +1,37 @@
 class Member:
-    """ Creates a new member """
     def __init__(self, name, age):
         self.name = name
         self.age = age
 
-    def info(self):
-        print 'User Name:', self.name, '- Age:', self.age
-
 
 class Post:
-    """ Creates a new post """
     def __init__(self, title, content, creator):
         self.title = title
         self.content = content
         self.creator = creator
 
-    def info(self):
-        print 'Post Title:', self.title, 'By:', self.creator
 
-    def content(self):
-        print 'Post Content:', self.content
+class MemberStore:
+    members = []
+
+    def get_all(self):
+        for member in self.members:
+            print member
+
+    def add(self, member):
+        self.members.append(member)
 
 
-def seperator(i):
+class PostStore:
+    posts = []
+
+    def get_all(self):
+        for post in self.posts:
+            print post
+
+    def add(self, post):
+        self.posts.append(post)
+
+
+def separator(i):
     print '-' * i
