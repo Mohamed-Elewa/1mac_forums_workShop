@@ -9,29 +9,3 @@ class Post:
         self.title = title
         self.content = content
         self.creator = creator
-
-
-class MemberStore:
-    members = []
-
-    def get_all(self):
-        for member in self.members:
-            print member
-
-    def add(self, member):
-        self.members.append(member)
-
-
-class PostStore:
-    posts = []
-
-    def get_all(self):
-        for post in self.posts:
-            print post
-
-    def add(self, post):
-        self.posts.append(post)
-
-
-def separator(i):
-    print '-' * i
