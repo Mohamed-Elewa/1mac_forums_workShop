@@ -3,8 +3,7 @@ class MemberStore:
     last_id = 1
 
     def get_all(self):
-        for member in MemberStore.members:
-            print member.id, member.name, member.age
+        return MemberStore.members
 
     def add(self, member):
         member.id = MemberStore.last_id
@@ -12,8 +11,13 @@ class MemberStore:
         MemberStore.last_id += 1
 
     def get_by_id(self, id):
-        for member in MemberStore.members:
+        for member in self.get_all():
             if member.id == id:
+                return member
+
+    def get_by_name(self, name):
+        for member in self.get_all():
+            if member.name == name:
                 return member
 
     def entity_exists(self, member):
@@ -24,6 +28,9 @@ class MemberStore:
         member = self.get_by_id(id)
         MemberStore.members.remove(member)
 
+    def update(self, id):
+        member = self.get_by_id(id)
+        return member
 
 
 class PostStore:
